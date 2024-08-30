@@ -1,5 +1,25 @@
 # Vue 3 + TypeScript + Vite
+step 1 : clone project 
+- https://github.com/Layyheang/Speech-To-Text.git
+===========================================
+step 2 : After clone intall node_modules
+- npm i / npm install
+==========================================
+# project use 
+> create 
+- HTML 
+> Style 
+- CSS
+- Tailwind css
+===========================================
+> Js freamwork 
+- Vue Js
+- Typescripr
+- pinia (vue)
+- router (vue)
+- primevue (component)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+have some folder that I'm to use a gaolboal and user all about component 
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+
+
