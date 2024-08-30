@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import HomePage from './views/Homepage/HomePage.vue';
 </script>
 
 <template>
-  <p class="bg-red-500">Testing</p>
+    <HomePage></HomePage>
+ 
 
 </template>
 
