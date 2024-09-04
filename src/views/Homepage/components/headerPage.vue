@@ -10,7 +10,6 @@ import Password from "primevue/password";
 // import IconField from "primevue/iconfield";
 
 
-const fullDate = ref(new Date()); 
 const date = ref(); 
 const time = ref();
 const greeting = ref('');  
@@ -54,7 +53,7 @@ onMounted(() => {
  
  
 const checkTimeShift = () => { 
-    const hour = fullDate.value.getHours(); 
+    const hour = new Date().getHours(); 
     if (hour === 5 || hour < 12) { 
         return "Good Morning"; 
     } else if (hour === 12 || hour < 18) { 

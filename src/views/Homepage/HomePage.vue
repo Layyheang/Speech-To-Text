@@ -6,8 +6,11 @@ import HeaderPage from './components/headerPage.vue';
         <video id="bg-cover" autoplay muted loop>  // this for loop a video run evenry time that user use 
             <source src="./assets/videos/backgroundv3.mp4" type="video/mp4" />  
         </video>
-        <div class="flex justify-center items-center relative">
-           <HeaderPage></HeaderPage>
+        <div class="flex flex-col">
+            <div class="flex justify-center items-center relative">
+                <HeaderPage></HeaderPage>
+            </div>
+            
         </div>
     </div>
 
