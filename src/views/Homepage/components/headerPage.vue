@@ -7,6 +7,7 @@ import Dialog from 'primevue/dialog'; // import for primevue to use
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import Password from "primevue/password";
+// import IconField from "primevue/iconfield";
 
 
 const fullDate = ref(new Date()); 
@@ -14,7 +15,7 @@ const date = ref();
 const time = ref();
 const greeting = ref('');  
 const visible = ref(false); // use primevue for login and config style with tailwindcss
-const isLoading = false
+const isLoading = ref(false); // Make isLoading reactive
 const field = ref({
     email:'',
     password:''
@@ -30,12 +31,12 @@ const rule = computed(() => {
 }) 
 const $valition = useVuelidate(rule, field.value)
 
-const login = async () => { 
+
+const signIn = async () => { 
     const invalid = await $valition.value.$validate() 
     if (invalid == false) return 
     isLoading.value = true
 }
-
 
 const updateCurrentTime = () => {   // function for run time that use moment liary 
     time.value = moment(new Date()).format('hh:mm:ss A');  
@@ -82,16 +83,18 @@ const checkTimeShift = () => {
                         <img src="../assets/imgs/logo.png" alt="logo-Norton"
                             class="w-[200px] ">
                 </div>
-                <div class="w-[33.33%] p-1  ">
+                <div class="w-[33.33%] p-1 ">
                     <div class="card flex justify-center p-2">
-                        <Button security="Login" outlined class="login-button " @click="visible = true" >
+                        <Button outlined class="login-button "  @click="visible = true" >
                                 <label class="text-black font-bold text-center">Login</label>
                         </Button> 
+                        <!-- <Button label="Login" icon="pi pi-user" @click="visible = true" /> -->
                                  
                         <Dialog v-model:visible="visible" pt:root:class="bg-transparent !border-0 !bg-transparent" pt:mask:class="backdrop-blur-sm">
                             <template #container="{ closeCallback }">
                                 <div class="flex flex-col px-8 py-8 gap-6 rounded-2xl h-[450px] bg-[#CDF0EA] backdrop-blur-md" 
-                                     @keydown.space.prevent>
+                                     @keydown.space.prevent
+                                     @keyup.enter="signIn">
                                      <span class="block mx-auto font-bold text-xl">Login</span>
                                         <div class="inline-flex flex-col gap-2"  >
                                             <label for="email" class="text-primary-50 font-semibold">Email</label>
@@ -109,13 +112,13 @@ const checkTimeShift = () => {
                                                             {{ $valition.password.$errors[0]?.$message }} 
                                                       </small>
                                         </div>
-                                        <div class="flex items-center gap-4 mt-4">
+                                        <div class="flex items-center gap-4 ">
                                             <Button  @click="closeCallback" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]">
-                                                <label class="text-black">Cancel</label>
+                                                <label class="text-black font-bold">Cancel</label>
                                             </Button>
-                                            <Button  @click="login" :loading="isLoading" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]">
-                                                <label class="text-black" >Sign-In</label>
-                                            </Button>
+
+                                            <Button label="Sign-In" severity="Login" outlined @click="signIn" :loading="isLoading"
+                                             class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]"/>
                                         </div>
                                 </div>
                             </template>
@@ -153,6 +156,11 @@ const checkTimeShift = () => {
     &::placeholder{
         color: rgba(255,255,255,0.5);
     }
+}
+
+:deep(.p-button-label){
+    color: black;
+    font-weight: bold;
 }
 </style>
 
