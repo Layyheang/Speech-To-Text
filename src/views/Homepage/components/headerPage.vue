@@ -1,17 +1,42 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";  
+import { ref, onMounted,computed } from "vue";  
+import {useVuelidate }from "@vuelidate/core";
+import { required,helpers } from "@vuelidate/validators";
 import moment from "moment"; 
 import Dialog from 'primevue/dialog'; // import for primevue to use 
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import Password from "primevue/password";
 
+
 const fullDate = ref(new Date()); 
 const date = ref(); 
 const time = ref();
 const greeting = ref('');  
 const visible = ref(false); // use primevue for login and config style with tailwindcss
-let isLoading = false
+const isLoading = false
+const field = ref({
+    email:'',
+    password:''
+})
+
+const rule = computed(() => { 
+    return { 
+        username: { required: helpers.withMessage("User is required", required)}, 
+        password: {  
+            required: helpers.withMessage("Password is required", required), 
+         } 
+    } 
+}) 
+const $valition = useVuelidate(rule, field.value)
+
+const login = async () => { 
+    const invalid = await $valition.value.$validate() 
+    if (invalid == false) return 
+    isLoading.value = true
+}
+
+
 const updateCurrentTime = () => {   // function for run time that use moment liary 
     time.value = moment(new Date()).format('hh:mm:ss A');  
 };  
@@ -59,8 +84,8 @@ const checkTimeShift = () => {
                 </div>
                 <div class="w-[33.33%] p-1  ">
                     <div class="card flex justify-center p-2">
-                        <Button security="Login" outlined class="login-button" @click="visible = true" :loading="isLoading">
-                                <label class="text-black font-bold ">Login</label>
+                        <Button security="Login" outlined class="login-button " @click="visible = true" >
+                                <label class="text-black font-bold text-center">Login</label>
                         </Button> 
                                  
                         <Dialog v-model:visible="visible" pt:root:class="bg-transparent !border-0 !bg-transparent" pt:mask:class="backdrop-blur-sm">
@@ -69,19 +94,27 @@ const checkTimeShift = () => {
                                      @keydown.space.prevent>
                                      <span class="block mx-auto font-bold text-xl">Login</span>
                                         <div class="inline-flex flex-col gap-2"  >
-                                            <label for="Email" class="text-primary-50 font-semibold">Email</label>
-                                            <InputText id="Email" type="email" class="!border !p-4 !text-primary-50 w-80"/>
+                                            <label for="email" class="text-primary-50 font-semibold">Email</label>
+                                            <InputText id="Email" type="email" placeholder="Enter your email" v-model="field.email"
+                                                       class="!border !p-4 !text-primary-50 w-80 hover:shadow-lg hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA] placeholder-white placeholder-opacity-50"/>
+                                                        <small v-if='$valition.password.$error' class=" text-red-500 font-bold"> 
+                                                            {{ $valition.password.$errors[0]?.$message }} 
+                                                        </small>
                                         </div>
                                         <div class="inline-flex flex-col gap-2">
                                             <label for="password" class="text-primary-50 font-semibold">Password</label>
-                                            <Password id="password" type="password" toggleMask :feedback="false" class="w-80 "/>
+                                            <Password id="Password" type="password" toggleMask :feedback="false" placeholder="Enter your password" v-model="field.password"
+                                                      class="w-80 hover:shadow-lg hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]"/>
+                                                      <small v-if='$valition.password.$error' class=" text-red-500 font-bold"> 
+                                                            {{ $valition.password.$errors[0]?.$message }} 
+                                                      </small>
                                         </div>
                                         <div class="flex items-center gap-4 mt-4">
                                             <Button  @click="closeCallback" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]">
                                                 <label class="text-black">Cancel</label>
                                             </Button>
-                                            <Button  @click="closeCallback" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]">
-                                                <label class="text-black">Sign-In</label>
+                                            <Button  @click="login" :loading="isLoading" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]">
+                                                <label class="text-black" >Sign-In</label>
                                             </Button>
                                         </div>
                                 </div>
@@ -97,26 +130,29 @@ const checkTimeShift = () => {
 
 <style scoped>
 .login-button{
-    color: black; /* Text color */
     font-weight: bold; /* Font weight */  
     width: 8.5rem; /* Width */
     height: 3rem; /* Height */  
     outline: none; /* Outline color */
-    box-shadow: 0 0 0 3px rgba(95, 190, 255, 0.5); /* Focus shadow */
+    box-shadow: 0 0 0 2px rgba(95, 190, 255, 0.5); /* Focus shadow */
     
 }
 
-.login-button:hover {
-  box-shadow: 0 4px 6px -1px rgba(6, 182, 212, 0.5), 0 2px 4px -2px rgba(6, 182, 212, 0.5); /* Hover shadow */
-}
-
 :deep(.p-inputtext){
+    border-radius: 3px;
     background-color: #CDF0EA;
     border: 1px solid rgba(106, 156, 137,0.5);
+    &::placeholder{
+        color: rgba(255,255,255,0.5);
+    }
 }
 :deep(.p-password-input){
+    border-radius: 3px;
     width: 100%;
     padding: 1rem;
+    &::placeholder{
+        color: rgba(255,255,255,0.5);
+    }
 }
 </style>
 
