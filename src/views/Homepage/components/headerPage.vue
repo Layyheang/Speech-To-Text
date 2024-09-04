@@ -22,7 +22,7 @@ const field = ref({
 
 const rule = computed(() => { 
     return { 
-        username: { required: helpers.withMessage("User is required", required)}, 
+        email: { required: helpers.withMessage("Email is required", required)}, 
         password: {  
             required: helpers.withMessage("Password is required", required), 
          } 
@@ -97,8 +97,8 @@ const checkTimeShift = () => {
                                             <label for="email" class="text-primary-50 font-semibold">Email</label>
                                             <InputText id="Email" type="email" placeholder="Enter your email" v-model="field.email"
                                                        class="!border !p-4 !text-primary-50 w-80 hover:shadow-lg hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA] placeholder-white placeholder-opacity-50"/>
-                                                        <small v-if='$valition.password.$error' class=" text-red-500 font-bold"> 
-                                                            {{ $valition.password.$errors[0]?.$message }} 
+                                                        <small v-if='$valition.email.$error' class=" text-red-500 font-bold"> 
+                                                            {{ $valition.email.$errors[0]?.$message }} 
                                                         </small>
                                         </div>
                                         <div class="inline-flex flex-col gap-2">
