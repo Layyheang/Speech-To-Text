@@ -97,10 +97,11 @@ const checkTimeShift = () => {
     font-weight: bold; /* Font weight */  
     width: 8.5rem; /* Width */
     height: 3rem; /* Height */  
-    outline: 1px solid rgba(95, 190, 255, 1); /* Outline color */
+    outline: none; /* Outline color */
     box-shadow: 0 0 0 3px rgba(95, 190, 255, 0.5); /* Focus shadow */
     
 }
+
 .login-button:hover {
   box-shadow: 0 4px 6px -1px rgba(6, 182, 212, 0.5), 0 2px 4px -2px rgba(6, 182, 212, 0.5); /* Hover shadow */
 }
