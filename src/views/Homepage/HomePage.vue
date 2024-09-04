@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HeaderPage from './components/headerPage.vue';
+import content from './components/content.vue';
 </script>
 <template>
     <div class=" homepage">
@@ -9,6 +10,9 @@ import HeaderPage from './components/headerPage.vue';
         <div class="flex flex-col">
             <div class="flex justify-center items-center relative">
                 <HeaderPage></HeaderPage>
+            </div>
+            <div class="flex relative ">
+                <content></content>
             </div>
             
         </div>
