@@ -70,7 +70,7 @@ const checkTimeShift = () => {
 
 </script>
 <template>
-        <div class=" w-[100%] flex items-center bg-[rgba(124, 147, 195,0.9)] backdrop-blur-sm">
+        <div class=" w-[100%] flex items-center bg-[#8b00002e] backdrop-blur-sm">
             <div class="w-full justify-between flex p-1">
                 <div class=" gap-4 flex justify-around items-center column-gap-2 xl:column-gap-4 text-[15px] w-[33.33%] font-bold" > 
                         <p>{{ greeting }}</p> 
@@ -92,7 +92,7 @@ const checkTimeShift = () => {
                                  
                         <Dialog v-model:visible="visible" pt:root:class="bg-transparent !border-0 !bg-transparent" pt:mask:class="backdrop-blur-sm">
                             <template #container="{ closeCallback }">
-                                <div class="flex flex-col px-8 py-8 gap-6 rounded-2xl h-[450px] bg-[#CDF0EA] backdrop-blur-md" 
+                                <div class="flex flex-col px-8 py-8 gap-6 rounded-2xl h-[450px] bg-[#CDF0EA] opacity-80 backdrop-blur-md" 
                                      @keydown.space.prevent
                                      @keyup.enter="signIn">
                                      <span class="block mx-auto font-bold text-xl">Login</span>
