@@ -77,8 +77,12 @@ const checkTimeShift = () => {
                                             <Password id="password" type="password" toggleMask :feedback="false" class="w-80 "/>
                                         </div>
                                         <div class="flex items-center gap-4 mt-4">
-                                            <Button label="Cancel" @click="closeCallback" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]"></Button>
-                                            <Button label="Sign-In" @click="closeCallback" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]"></Button>
+                                            <Button  @click="closeCallback" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]">
+                                                <label class="text-black">Cancel</label>
+                                            </Button>
+                                            <Button  @click="closeCallback" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]">
+                                                <label class="text-black">Sign-In</label>
+                                            </Button>
                                         </div>
                                 </div>
                             </template>
