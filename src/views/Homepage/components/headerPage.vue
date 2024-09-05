@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted,computed } from "vue";  
 import {useVuelidate }from "@vuelidate/core";
-import { required,helpers } from "@vuelidate/validators";
+import { required,helpers,email } from "@vuelidate/validators";
 import moment from "moment"; 
 import Dialog from 'primevue/dialog'; // import for primevue to use 
 import Button from 'primevue/button';
@@ -22,7 +22,11 @@ const field = ref({
 
 const rule = computed(() => { 
     return { 
-        email: { required: helpers.withMessage("Email is required", required)}, 
+        email: { 
+            required: helpers.withMessage("Email is required", required),
+            email: helpers.withMessage("Invalid email format", email)
+
+        }, 
         password: {  
             required: helpers.withMessage("Password is required", required), 
          } 
