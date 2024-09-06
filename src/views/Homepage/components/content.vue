@@ -7,7 +7,7 @@
                 <h1>hello</h1>
             </div >
             <div class="bg-pink-700 w-[50%]">
-                this me
+                byeeee
             </div>
         </div>
     </div>
