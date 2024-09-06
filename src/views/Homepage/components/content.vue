@@ -1,7 +1,14 @@
 <script setup lang="ts">
 </script>
 <template>
-    <div class="bg-red-400 w-[100%]">
-        <h1>hiiiiiii</h1>
+    <div class=" w-full h-[70vh] m-[50px] border-none rounded-[25px] backdrop-blur-[6px] p-2">
+        <div class="flex justify-evenly w-full">
+            <div class="bg-red-700 w-[50%] ">
+                <h1>hello</h1>
+            </div >
+            <div class="bg-pink-700 w-[50%]">
+                this me
+            </div>
+        </div>
     </div>
 </template>   

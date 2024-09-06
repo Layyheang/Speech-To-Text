@@ -35,7 +35,7 @@ export class Storage {
         return this.decryptValue(encryptedToken); 
     } 
  
- 
+
     static clearStorage() { 
         this.remove(this.ACCESS_TOKEN); 
     } 

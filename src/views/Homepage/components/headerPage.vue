@@ -73,55 +73,54 @@ const checkTimeShift = () => {
 
 </script>
 <template>
-        <div class=" w-[100%] flex items-center bg-[#8b00002e] backdrop-blur-sm">
-            <div class="w-full justify-between flex p-1">
-                <div class=" gap-4 flex justify-around items-center column-gap-2 xl:column-gap-4 text-[15px] w-[33.33%] font-bold" > 
+        <div class=" w-[100%] flex items-center ">
+            <div class="w-full justify-between flex p-2">
+                <div class="flex justify-start w-[33.33%] ">
+                        <img src="../assets/imgs/logo.png" alt="logo-Norton"
+                            class="w-[180px] h-[60px] ml-7">
+                </div>
+                <div class=" gap-4 flex justify-around items-center text-[15px] w-[33.33%] font-medium text-black backdrop-blur-sm border-none rounded-[49px] shadow-2xl shadow-[#674188]  " > 
                         <p>{{ greeting }}</p> 
                         <div class="w-[50%] justify-around flex ">
                             <p >{{ date }}</p> 
-                            <p class="min-w-24">{{ time }}</p> 
+                            <p >{{ time }}</p> 
                         </div>
                     </div>
-                <div class="flex justify-center w-[33.33%] ">
-                        <img src="../assets/imgs/logo.png" alt="logo-Norton"
-                            class="w-[200px] ">
-                </div>
-                <div class="w-[33.33%] p-1 ">
-                    <div class="card flex justify-center p-2">
-                        <Button outlined class="login-button "  @click="visible = true" >
-                                <label class="text-black font-bold text-center">Login</label>
-                        </Button> 
-                        <!-- <Button label="Login" icon="pi pi-user" @click="visible = true" /> -->
+               
+                <div class="w-[33.33%]">
+                    <div class="card flex justify-end mr-20 p-[0.5rem]">
+                        <Button label="Login" severity="Login"  outlined  @click="visible = true"
+                            class="text-[#d3d3d3] font-bold w-[6rem] h-[3rem] focus:outline-double focus:shadow-outline hover:shadow-cyan-500/50 hover:shadow-lg" />
                                  
-                        <Dialog v-model:visible="visible" pt:root:class="bg-transparent !border-0 !bg-transparent" pt:mask:class="backdrop-blur-sm">
+                        <Dialog v-model:visible="visible" pt:root:class=" !border-0 !bg-transparent" pt:mask:class="backdrop-blur-sm">
                             <template #container="{ closeCallback }">
-                                <div class="flex flex-col px-8 py-8 gap-6 rounded-2xl h-[450px] bg-[#CDF0EA] opacity-80 backdrop-blur-md" 
+                                <div class="flex flex-col px-8 py-8 gap-6 rounded-2xl h-[450px] bg-[#856c9b] backdrop-blur-md"  
                                      @keydown.space.prevent
                                      @keyup.enter="signIn">
-                                     <span class="block mx-auto font-bold text-xl">Login</span>
+                                     <span class="block mx-auto font-bold text-xl text-black">Login</span>
                                         <div class="inline-flex flex-col gap-2"  >
-                                            <label for="email" class="text-primary-50 font-semibold">Email</label>
-                                            <InputText id="Email" type="email" placeholder="Enter your email" v-model="field.email"
-                                                       class="!border !p-4 !text-primary-50 w-80 hover:shadow-lg hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA] placeholder-white placeholder-opacity-50"/>
+                                            <label for="email" class="font-semibold text-black">Email</label>
+                                            <InputText id="Email" type="email" v-model="field.email"
+                                                       class="!p-4  w-80 hover:shadow-lg hover:shadow-[#6A9C89] "/>
                                                         <small v-if='$valition.email.$error' class=" text-red-500 font-bold"> 
                                                             {{ $valition.email.$errors[0]?.$message }} 
                                                         </small>
                                         </div>
                                         <div class="inline-flex flex-col gap-2">
-                                            <label for="password" class="text-primary-50 font-semibold">Password</label>
-                                            <Password id="Password" type="password" toggleMask :feedback="false" placeholder="Enter your password" v-model="field.password"
-                                                      class="w-80 hover:shadow-lg hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]"/>
+                                            <label for="password" class="text-black font-semibold">Password</label>
+                                            <Password id="Password" type="password" toggleMask :feedback="false" v-model="field.password"
+                                                      class="w-80 hover:shadow-lg hover:shadow-[#6A9C89] "/>
                                                       <small v-if='$valition.password.$error' class=" text-red-500 font-bold"> 
                                                             {{ $valition.password.$errors[0]?.$message }} 
                                                       </small>
                                         </div>
                                         <div class="flex items-center gap-4 ">
-                                            <Button  @click="closeCallback" text class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]">
+                                            <Button  @click="closeCallback" text class="!p-4 w-full  !border !border-[#7C93C3] hover:shadow-md hover:shadow-[#6A9C89] ">
                                                 <label class="text-black font-bold">Cancel</label>
                                             </Button>
 
                                             <Button label="Sign-In" severity="Login" outlined @click="signIn" :loading="isLoading"
-                                             class="!p-4 w-full !text-primary-50 !border !border-[#6A9C89] hover:shadow-md hover:shadow-[#6A9C89] hover:!bg-[#CDF0EA]"/>
+                                             class="!p-4 w-full  !border !border-[#7C93C3] hover:shadow-md hover:shadow-[#6A9C89]"/>
                                         </div>
                                 </div>
                             </template>
@@ -135,35 +134,34 @@ const checkTimeShift = () => {
 </template>
 
 <style scoped>
-.login-button{
+
+
+.login-button{  
     font-weight: bold; /* Font weight */  
-    width: 8.5rem; /* Width */
+    width: 6rem; /* Width */
     height: 3rem; /* Height */  
-    outline: none; /* Outline color */
-    box-shadow: 0 0 0 2px rgba(95, 190, 255, 0.5); /* Focus shadow */
+    box-shadow: 0 25px 50px -12px rgba(103, 65, 136, 0.25);
+
     
 }
 
 :deep(.p-inputtext){
     border-radius: 3px;
-    background-color: #CDF0EA;
-    border: 1px solid rgba(106, 156, 137,0.5);
-    &::placeholder{
-        color: rgba(255,255,255,0.5);
-    }
+    background-color: #856c9b;
+    border: 1px solid #7C93C3;
+   
 }
 :deep(.p-password-input){
     border-radius: 3px;
     width: 100%;
     padding: 1rem;
-    &::placeholder{
-        color: rgba(255,255,255,0.5);
-    }
+  
 }
 
 :deep(.p-button-label){
     color: black;
     font-weight: bold;
+   
 }
 </style>
 

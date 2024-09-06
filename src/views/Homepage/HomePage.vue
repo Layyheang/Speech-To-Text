@@ -5,8 +5,9 @@ import content from './components/content.vue';
 <template>
     <div class=" homepage">
         <video id="bg-cover" autoplay muted loop>  // this for loop a video run evenry time that user use 
-            <source src="./assets/videos/backgroundv3.mp4" type="video/mp4" />  
+            <source src="./assets/videos/bgvv2.mp4" type="video/mp4" />  
         </video>
+        
         <div class="flex flex-col">
             <div class="flex justify-center items-center relative">
                 <HeaderPage></HeaderPage>
@@ -28,7 +29,16 @@ import content from './components/content.vue';
     top: 50%;  
     transform: translateY(-50%);  
     object-fit: unset; 
-    }
+    } 
 }
+/* 
+.homepage{
+    background-image: url(./assets/imgs/bgv4.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+} */
 
 </style>
