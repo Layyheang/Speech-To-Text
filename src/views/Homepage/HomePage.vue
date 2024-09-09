@@ -15,6 +15,7 @@ import content from './components/content.vue';
             <div class="flex relative ">
                 <content></content>
             </div>
+          
             
         </div>
     </div>
