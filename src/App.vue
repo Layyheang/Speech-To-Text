@@ -1,8 +1,6 @@
 <script setup lang="ts"></script>
 
 <template>
-  <!-- <HomePage></HomePage>
-    <Getstart></Getstart> -->
   <RouterView v-slot="{ Component, route }">
 
     <Transition name="fade-slow" mode="out-in">

@@ -32,6 +32,4 @@ import content from './components/content.vue';
     object-fit: unset; 
     } 
 }
-
-
 </style>
