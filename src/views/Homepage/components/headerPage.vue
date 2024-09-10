@@ -52,14 +52,18 @@ const checkTimeShift = () => {
                
                 <div class="w-[33.33%]">
                     <div class="card flex justify-end mr-20 p-[0.5rem]">
+
                     </div>
                           
                 </div>      
             </div>
-        </div>      
-
+        </div>  
+        
+       
 </template>
 
 <style scoped>
+
+
 </style>
 

@@ -32,14 +32,6 @@ import content from './components/content.vue';
     object-fit: unset; 
     } 
 }
-/* 
-.homepage{
-    background-image: url(./assets/imgs/bgv4.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-} */
+
 
 </style>
