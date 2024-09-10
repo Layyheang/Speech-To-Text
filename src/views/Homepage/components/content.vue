@@ -28,7 +28,7 @@ const test = () => {
 
             </div >
             <div class="background w-[50%] flex-col flex justify-center items-center -top-50 ">
-                <img src="../assets/imgs/bgv1.png" alt="backGround"
+                <img src="../assets/imgs/3d1.png" alt="backGround"
                  class="w-[70%] "/>
             </div>
         </div>
@@ -78,14 +78,13 @@ const test = () => {
   height: 80%;
   position: relative;
   animation-name: animation;
-  animation-duration: 5s;
+  animation-duration: 3s;
   animation-iteration-count:infinite;
 }
 
 @keyframes animation {
-  0%   { left:0px; top:0px;}
+  0%   { left:0px; top:100px;}
   25%  { left:100px; top:0px;}
-  75%  { left:0px; top:100px;}
-  100% { left:0px; top:0px;}
+  100% { left:0px; top:100px;}
 }
 </style>
