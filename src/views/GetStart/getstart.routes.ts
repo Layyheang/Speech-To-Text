@@ -1,10 +1,9 @@
 import type { RouteRecordRaw } from "vue-router";
 const routes: Array<RouteRecordRaw>=[
     {
-        path: '/',
-        name: 'homepage',
-        component: ()=>import('./HomePage.vue'),
-       
+        path: '/vioce',
+        name: 'getstart',
+        component: ()=>import('./Getstart.vue'),
     }
 
 ]
