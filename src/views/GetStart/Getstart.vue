@@ -3,7 +3,7 @@ import appsideber from './components/appsideber.vue'
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 const router = useRouter();
-const isSidebarOpen = ref(false); // Reactive variable to track whether the sidebar is open
+const isSidebarOpen = ref(true); // Reactive variable to track whether the sidebar is open
 const backButton = () => {
     router.push('./')
 }
