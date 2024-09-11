@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import appsideber from './components/appsideber.vue'
+import dashboard from './components/dashboard.vue';
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
 const router = useRouter();
@@ -15,9 +16,8 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-    <div class="contener">
-        <div>
-            <div class="sideberBg w-[20%] h-[100vh] overflow-auto flex-col flex backdrop-blur-[6px] box-border">
+    <div class="contener flex ">
+            <div class="sideberBg w-[20%] h-[100vh]  flex-col flex backdrop-blur-[6px] box-border">
                 <div class="flex justify-between m-4 box-border ">
                 <img src="../GetStart/assets/svg/back2.png" alt="backLogo" 
                 class="backButton h-[25px] " 
@@ -31,19 +31,20 @@ const toggleSidebar = () => {
             </div>
                
             </div>
-            <div class=" w-[50%] text-center flex-col flex justify-center items-center bg-pink-700">
+        <div class=" w-[80%] h-[100vh] box-border justify-center items-center">
+            <dashboard></dashboard>
+                
 
-            </div>
         </div>
     </div>
 </template>
 <style scoped>
 .contener {
-    background-color: #474c6d;
+    background-color: #393d53;
 }
 
 .sideberBg {
-    background-color: rgba(117, 106, 182, 0.5);
+    background-color: rgba(95, 89, 129, 0.5);
 }
 
 .backButton{
