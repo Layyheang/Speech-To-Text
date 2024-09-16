@@ -42,9 +42,9 @@ const checkTimeShift = () => {
                         <img src="../assets/imgs/logo.png" alt="logo-Norton"
                             class="w-[180px] h-[60px] ml-7">
                 </div>
-                <div class=" timeBtn gap-4 flex justify-around items-center text-[15px] w-[33.33%] font-medium text-black backdrop-blur-sm border-none rounded-[49px] shadow-2xl shadow-[#674188]  " > 
+                <div class=" timeBtn gap-4 flex justify-around items-center text-[15px] w-[33.33%] font-bold text-black backdrop-blur-sm border-none rounded-[49px] shadow-2xl shadow-[#674188]  " > 
                         <p>{{ greeting }}</p> 
-                        <div class="w-[50%] justify-around flex ">
+                        <div class="w-[50%] justify-around flex font-bold ">
                             <p >{{ date }}</p> 
                             <p >{{ time }}</p> 
                         </div>

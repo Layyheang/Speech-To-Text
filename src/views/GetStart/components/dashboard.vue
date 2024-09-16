@@ -26,6 +26,7 @@ const startRecognition = () => {
   recognition.onresult = (event) => {
     const spokenText = event.results[0][0].transcript.toUpperCase();
     command.value = spokenText;
+    saveToLocal(spokenText); //New Function
     handleCommand(spokenText);
     listening.value = false;
   };
@@ -35,6 +36,16 @@ const startRecognition = () => {
     listening.value = false;
   };
 };
+
+//Save to local
+const saveToLocal = (spokenText: string) => {
+  let history = JSON.parse(localStorage.getItem('speechHistory') || '[]');
+  history.push(spokenText);
+  localStorage.setItem('speechHistory', JSON.stringify(history));
+  // Emit a custom event to notify the sidebar to update its history
+  const event = new CustomEvent('speechHistoryUpdate')
+  window.dispatchEvent(event);
+}
 
 const handleCommand = (spokenText: string | string[]) => {
   if (spokenText.includes('hello')) {

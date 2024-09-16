@@ -1,58 +1,74 @@
 <script setup lang="ts">
-import { reactive} from 'vue'
+import { reactive, onMounted} from 'vue'
 
 const myObject = reactive({
-  title: 'How to study Vue.js',
-  author: 'Layheang',
-  publishedAt: '2016-04-10',
-  description: 'A comprehensive guide to learning Vue.js step-by-step.',
-  category: 'Web Development',
-  pages: 320,
-  publisher: 'Tech Publishers',
-  ISBN: '978-3-16-148410-0',
-  tags: ['JavaScript', 'Vue', 'Frontend', 'Framework'],
-  isAvailable: true,
-  ratings: 4.8,
-  reviews: [
-    {
-      reviewer: 'John Doe',
-      comment: 'Excellent resource for beginners!',
-      rating: 5,
-      date: '2021-06-12',
-    },
-    {
-      reviewer: 'Jane Smith',
-      comment: 'Very informative and well-structured.',
-      rating: 4.5,
-      date: '2021-07-08',
-    },
-  ],
-  price: 29.99,               // Price of the book
-  discount: 0.1,              // 10% discount
-  totalSold: 1500,            // Total number of copies sold
-  availableFormats: ['eBook', 'Paperback', 'Hardcover'], // Different formats of the book
-  languages: ['English', 'Spanish', 'French'],  // Languages the book is available in
-  authorDetails: {            // Nested object with more details about the author
-    name: 'Layheang',
-    birthDate: '1985-08-15',
-    nationality: 'Cambodian',
-    otherBooks: ['Mastering Vue', 'JavaScript for Beginners'],
-    socialMedia: {
-      twitter: '@layheang_js',
-      website: 'https://layheang.dev',
-    },
-  },
-  editors: ['Alice', 'Bob'],  // Array of people who edited the book
-  publishedLocations: ['USA', 'Canada', 'UK'],  // List of countries where the book is published
-  coverImageUrl: 'https://example.com/cover.jpg',  // URL to the book cover image
-  lastUpdated: '2024-09-01',  // Date when the data was last updated
-  awards: [
-    { name: 'Best Tech Book', year: 2017 },
-    { name: 'Top Web Development Book', year: 2018 },
-  ],
-  readingTime: '10 hours',    // Estimated reading time for the book
-  featured: true,             // Boolean to indicate if the book is featured
-  popularityScore: 98,        // A score that reflects the book's popularity
+  history: [] as string[],
+  // title: 'How to study Vue.js',
+  // author: 'Layheang',
+  // publishedAt: '2016-04-10',
+  // description: 'A comprehensive guide to learning Vue.js step-by-step.',
+  // category: 'Web Development',
+  // pages: 320,
+  // publisher: 'Tech Publishers',
+  // ISBN: '978-3-16-148410-0',
+  // tags: ['JavaScript', 'Vue', 'Frontend', 'Framework'],
+  // isAvailable: true,
+  // ratings: 4.8,
+  // reviews: [
+  //   {
+  //     reviewer: 'John Doe',
+  //     comment: 'Excellent resource for beginners!',
+  //     rating: 5,
+  //     date: '2021-06-12',
+  //   },
+  //   {
+  //     reviewer: 'Jane Smith',
+  //     comment: 'Very informative and well-structured.',
+  //     rating: 4.5,
+  //     date: '2021-07-08',
+  //   },
+  // ],
+  // price: 29.99,               // Price of the book
+  // discount: 0.1,              // 10% discount
+  // totalSold: 1500,            // Total number of copies sold
+  // availableFormats: ['eBook', 'Paperback', 'Hardcover'], // Different formats of the book
+  // languages: ['English', 'Spanish', 'French'],  // Languages the book is available in
+  // authorDetails: {            // Nested object with more details about the author
+  //   name: 'Layheang',
+  //   birthDate: '1985-08-15',
+  //   nationality: 'Cambodian',
+  //   otherBooks: ['Mastering Vue', 'JavaScript for Beginners'],
+  //   socialMedia: {
+  //     twitter: '@layheang_js',
+  //     website: 'https://layheang.dev',
+  //   },
+  // },
+  // editors: ['Alice', 'Bob'],  // Array of people who edited the book
+  // publishedLocations: ['USA', 'Canada', 'UK'],  // List of countries where the book is published
+  // coverImageUrl: 'https://example.com/cover.jpg',  // URL to the book cover image
+  // lastUpdated: '2024-09-01',  // Date when the data was last updated
+  // awards: [
+  //   { name: 'Best Tech Book', year: 2017 },
+  //   { name: 'Top Web Development Book', year: 2018 },
+  // ],
+  // readingTime: '10 hours',    // Estimated reading time for the book
+  // featured: true,             // Boolean to indicate if the book is featured
+  // popularityScore: 98,        // A score that reflects the book's popularity
+});
+
+//Load history from LocalStorage
+const loadHistoryFromLocal = () => {
+  const storeHistory = JSON.parse(localStorage.getItem('speechHistory') || '[]');
+  myObject.history = storeHistory;
+};
+
+// Listen for the custom event when the speech history is updated
+window.addEventListener('speechHistoryUpdate', () => {
+  loadHistoryFromLocal();
+});
+
+onMounted(() => {
+  loadHistoryFromLocal();
 });
 
 </script>
@@ -68,10 +84,11 @@ const myObject = reactive({
                 <h1>Previous 7 Day</h1>
             </div>
             <div class="p-1 text-white/70  ">
-                <p v-for="value in myObject" :key="value"
+                <p v-for="(value, index) in myObject.history" :key="index"
                     class="truncate mb-2">
                     {{ value }}
                 </p>
+                
               
             </div>
         </div>
