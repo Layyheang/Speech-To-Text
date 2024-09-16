@@ -14,7 +14,7 @@ const test = () => {
             <div class=" w-[50%] text-center flex-col flex justify-center items-center ">
                 <div class="contentText text-[50px] font-semibold text-[#D2E0FB]">
                     <h1><i>life is Better</i></h1>
-                    <span><i>With AI</i></span>
+                    <span><i>With AI try</i></span>
                 </div>
 
                     <div class="text-white flex relative "> 

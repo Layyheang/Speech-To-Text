@@ -47,17 +47,19 @@ const handleCommand = (spokenText: string | string[]) => {
     alert(`Unknown command: ${spokenText}`);
   }
 };
+
+
 </script>
 <template>
     <div class="h-screen flex flex-col justify-center items-center ">
         <div class="voiceRecord mb-[30px]">
             <img src="../assets/imgs/v3.png" alt="voiceRecord"
-            @click="startRecognition"
+             @click="startRecognition"
             class="h-[60px] cursor-pointer ">
         </div>
         <div class="text-white/75 text-[35px] font-sans mt-[30px]">
-            <i v-if="listening">listening......</i>
-            <i v-if="command">{{ command }}</i>
+            <i v-if="listening">listening...</i>
+            <i v-if="command" >{{command}}</i>
         </div>
      
     </div>
