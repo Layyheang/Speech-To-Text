@@ -67,7 +67,7 @@ const handleCommand = (spokenText: string | string[]) => {
             class="h-[60px] cursor-pointer ">
         </div>
         <div class="text-white/75 text-[35px] font-sans mt-[30px]">
-            <i v-if="listening">listening......</i>
+            <i v-if="listening">listening.....</i>
             <i v-if="command">{{ command }}</i>
         </div>
      
